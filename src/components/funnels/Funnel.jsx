@@ -1,37 +1,29 @@
 import React, { Component } from 'react';
 import FunnelTimeline from './FunnelTimeline';
 import FunnelStep from './FunnelStep';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
 import './styles.css';
+import { addStep } from '../../reducers/funnels';
 
-export default class Funnel extends Component {
-  
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      steps: ['step_1', 'step_2', 'step_3'],
-    }
-  }
+class Funnel extends Component {
 
   getFunnelSteps() {
+    console.log('steps :: ', this.props.steps)
+
     return (
-      this.state.steps.map((step, id) => {
+      this.props.steps.map((step, id) => {
         return (
-            <FunnelStep key={`step-${id}`} id={id} />
+            <FunnelStep key={`step-${id}`} id={id}/>
         )
       })
     )
   }
 
   addStep = () => {
-    const step = `step--${this.state.steps.length}`;
-    const steps = this.state.steps;
-    steps.push(step);
-
-
-    this.setState({
-      steps: steps
-    })
+    const step = `step--${Math.random()}`;
+    this.props.addStep(step)
   }
 
   render() {
@@ -40,7 +32,7 @@ export default class Funnel extends Component {
       <div>
         Funnels explore mode
         <div className='funnel'>
-          <FunnelTimeline steps={this.state.steps}/>
+          <FunnelTimeline steps={this.props.steps}/>
           <div className='steps'>
             {this.getFunnelSteps()}
           </div>
@@ -53,3 +45,16 @@ export default class Funnel extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  steps: state.funnels.steps,
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  addStep,
+}, dispatch)
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Funnel)
