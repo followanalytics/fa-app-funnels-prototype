@@ -9,21 +9,59 @@ import { addStep } from '../../reducers/funnels';
 
 class Funnel extends Component {
 
-  getFunnelSteps() {
-    console.log('steps :: ', this.props.steps)
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      overed: -1,
+      activeItem: -1,
+    }
+  }
+
+  setActive = (id) => {
+
+    this.setState({
+      activeItem: id !== this.state.activeItem ? id : -1,
+    })    
+  }
+
+  hasExploreMode(id) {
+    if(id === this.state.activeItem)
+    {
+      return true
+    }
+    else if(id === this.props.stepsLength - 1 && id > 0) {
+      return true;
+    }
+  }
+
+  getFunnelSteps() {
+    const stepsLength = this.props.steps.length;
+    
     return (
       this.props.steps.map((step, id) => {
+        const exploreMode = this.hasExploreMode(id);
+
         return (
-            <FunnelStep key={`step-${id}`} id={id}/>
+            <FunnelStep
+              key={`step-${id}`}
+              id={id}
+              stepName={step}
+              mouseUp={this.setActive}
+              exploreMode={exploreMode}
+            />
         )
       })
     )
   }
 
-  addStep = () => {
+  _addStep = () => {
     const step = `step--${Math.random()}`;
-    this.props.addStep(step)
+    this.props.addStep(step);
+    this.setState({
+      activeItem: this.props.steps.length,
+      overed: this.props.steps.length,
+    });
   }
 
   render() {
@@ -32,12 +70,12 @@ class Funnel extends Component {
       <div>
         Funnels explore mode
         <div className='funnel'>
-          <FunnelTimeline steps={this.props.steps}/>
+          <FunnelTimeline steps={this.props.steps} exploreMode={this.state.activeItem}/>
           <div className='steps'>
             {this.getFunnelSteps()}
           </div>
         </div>
-        <div className='timeline-step' onClick={this.addStep}>
+        <div className='timeline-step' onClick={this._addStep}>
           <div className='timeline-point'>+</div>
           <div className='timeline-add-copy'>Add Step</div>
         </div>

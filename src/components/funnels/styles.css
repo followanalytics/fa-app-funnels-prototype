@@ -14,15 +14,22 @@
   flex: 1;
 }
 
-.funnel .step {
+.step {
   display: flex;
   height: 100px;
   margin-bottom: 15px;
 }
 
+.step.explore-mode {
+  /* background-color: #a8a8a8; */
+  min-height: 300px;
+  transition: height .3s ease-out;
+}
+
 .funnel .funnel-step {
   padding: 0 15px;
 }
+
 
 .funnel .funnel-step-definition {
   border: solid rgb(156, 156, 156) 1px;
@@ -30,6 +37,7 @@
   align-items: center;
   flex: 1;
   border-radius: 2px;
+  position: relative;
 }
 
 .funnel .funnel-step-definition .dragzone{
@@ -68,4 +76,10 @@
 
 .timeline-add-copy {
   margin-left: 10px;
+}
+
+.delete-step-action {
+  position: absolute;
+  top: 0;
+  right: 5px;
 }

@@ -4,12 +4,10 @@ export const DELETE_STEP = 'steps/DELETE_STEP'
 const initialState = {
   steps: ['step_1'],
   explorationEnabled: true,
-
+  selected: -1
 }
 
 export default (state = initialState, action) => {
-  console.log('funnel store :: action :: ', action.step)
-  console.log('funnel store :: steps  :: ', state.steps)
   switch (action.type) {
     case ADD_STEP:
       return {
@@ -24,9 +22,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         steps: state.steps.filter((el, index) => {
-          // console.log('steps :: filter :: el    :: ', el);
-          console.log('steps :: filter :: id    :: ', action.id);
-          console.log('steps :: filter :: index :: ', index);
           return index !== action.id
         })
       }

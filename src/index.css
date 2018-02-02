@@ -43,4 +43,6 @@ body {
 .card-content {
   text-align: left;
   padding: 10px;
+  overflow-y: auto;
+  max-height: 785px;
 }

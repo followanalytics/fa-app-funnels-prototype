@@ -8,7 +8,7 @@ export default class FunnelTimeline extends Component {
       this.props.steps.map((step, id) => {
         const label = id+1;
         return (
-          <div className='timeline-step step'>
+          <div className={`timeline-step step ${this.props.exploreMode  === id ? 'explore-mode' : ''}`}>
             <div className='timeline-point'>
               {label}
             </div>
