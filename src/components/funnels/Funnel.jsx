@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 import FunnelTimeline from './FunnelTimeline';
-import FunnelStep from './FunnelStep';
+import FunnelStep from './steps/FunnelStep';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import './styles.css';
+import './animations.css';
 import { addStep } from '../../reducers/funnels';
+
+const StepAnim = ({ children, ...props }) => (
+  <CSSTransition
+    {...props}
+    timeout={300}
+    classNames="stepanim"
+  >
+    {children}
+  </CSSTransition>
+);
 
 class Funnel extends Component {
 
@@ -22,7 +34,7 @@ class Funnel extends Component {
 
     this.setState({
       activeItem: id !== this.state.activeItem ? id : -1,
-    })    
+    })
   }
 
   hasExploreMode(id) {
@@ -37,21 +49,23 @@ class Funnel extends Component {
 
   getFunnelSteps() {
     const stepsLength = this.props.steps.length;
-    
     return (
-      this.props.steps.map((step, id) => {
-        const exploreMode = this.hasExploreMode(id);
-
-        return (
-            <FunnelStep
-              key={`step-${id}`}
-              id={id}
-              stepName={step}
-              mouseUp={this.setActive}
-              exploreMode={exploreMode}
-            />
-        )
-      })
+      <TransitionGroup className='funnels-steps'>
+        {this.props.steps.map((step, id) => {
+          const exploreMode = this.hasExploreMode(id);
+          return (
+            <StepAnim key={step}>
+              <FunnelStep
+                key={`step-${id}`}
+                id={id}
+                stepName={step}
+                mouseUp={this.setActive}
+                exploreMode={exploreMode}
+              />
+            </StepAnim>
+          )
+        })}
+      </TransitionGroup>
     )
   }
 
@@ -65,7 +79,6 @@ class Funnel extends Component {
   }
 
   render() {
-
     return (
       <div>
         Funnels explore mode

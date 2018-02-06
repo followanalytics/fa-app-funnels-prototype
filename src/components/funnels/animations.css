@@ -1,0 +1,21 @@
+.stepanim-enter {
+  opacity: 0.01;
+  top: 100px;
+}
+
+.stepanim-enter.stepanim-enter-active {
+  opacity: 1;
+  top: 0px;
+  position: relative;
+  transition: top opacity 300ms ease-out;
+}
+
+.stepanim-exit {
+  opacity: 1;
+}
+
+.stepanim-exit.stepanim-exit-active {
+  opacity: 0.01;
+  left: 30px;
+  transition: opacity left 300ms ease-in;
+}

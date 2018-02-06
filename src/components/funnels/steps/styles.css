@@ -1,0 +1,82 @@
+.step {
+  display: flex;
+  height: 100px;
+  margin-bottom: 15px;
+}
+
+.step.explore-mode {
+  /* background-color: #a8a8a8; */
+  min-height: 320px;
+}
+
+.funnel .funnel-step {
+  padding: 0 15px;
+}
+
+
+.funnel .funnel-step-definition {
+  border: solid rgb(156, 156, 156) 1px;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  border-radius: 2px;
+  position: relative;
+}
+
+.funnel .funnel-step-definition .dragzone{
+  width:20px;
+  height: 100%;
+  background-color: #a8a8a8;
+  flex: 0.023 1;
+}
+
+.funnel .funnel-step-definition .content{
+  flex: 1 1;
+}
+
+.step-actions-container {
+  position: absolute;
+  top: 0;
+  right: 5px;
+}
+
+.explore-container {
+  display: flex;
+  flex-direction:  row;
+}
+
+.funnel-event-list-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+}
+
+.funnel-event-list-item {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  font-size: 14px;
+  height: 40px;  
+}
+
+/* Step animation */
+.stepanim-enter {
+  opacity: 0.01;
+  margin-top: 30px;
+}
+
+.stepanim-enter.stepanim-enter-active {
+  opacity: 1;
+  margin-top: 0;
+  transition: opacity 300ms ease-in;
+}
+
+.stepanim-leave {
+  opacity: 1;
+}
+
+.stepanim-leave.stepanim-leave-active {
+  opacity: 0.01;
+  margin-left: 30px;
+  transition: opacity 300ms ease-in;
+}
