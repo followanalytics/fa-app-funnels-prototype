@@ -50,6 +50,8 @@
   flex-direction: column;
   flex: 1;
   width: 100%;
+  margin-top: 20px;
+  padding-right: 10px;
 }
 
 .funnel-event-list-item {

@@ -1,13 +1,13 @@
 .stepanim-enter {
   opacity: 0.01;
-  top: 100px;
+  transform: translate(0px,20px);
 }
 
 .stepanim-enter.stepanim-enter-active {
   opacity: 1;
-  top: 0px;
-  position: relative;
-  transition: top opacity 300ms ease-out;
+  transform: translate(0px,0px);
+  transition: 300ms ease-out;
+  transition-property: all;
 }
 
 .stepanim-exit {

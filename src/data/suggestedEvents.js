@@ -1,4 +1,4 @@
-[
+/* export const eventsData = [
       {
       "eventName": "event",
       "completions": 938981,
@@ -64,7 +64,7 @@
       "completions": 212549,
       "averageDuration": 73021
    },
-      {
+   {
       "eventName": "event",
       "completions": 128053,
       "averageDuration": 32988
@@ -454,49 +454,51 @@
       "completions": 240027,
       "averageDuration": 70066
    },
-      {
-      "eventName": "event",
-      "completions": 432588,
-      "averageDuration": 82341
-   },
-      {
-      "eventName": "event",
-      "completions": 824903,
-      "averageDuration": 36639
-   },
-      {
-      "eventName": "event",
-      "completions": 997793,
-      "averageDuration": 12499
-   },
+*/
+export const eventsData = [
       {
       "eventName": "event",
       "completions": 10331,
-      "averageDuration": 27205
-   },
+      "averageDuration": 27
+      },
       {
       "eventName": "event",
-      "completions": 684969,
-      "averageDuration": 11191
-   },
+      "completions": 9977,
+      "averageDuration": 99
+      },
       {
       "eventName": "event",
-      "completions": 132143,
-      "averageDuration": 12515
-   },
+      "completions": 8249,
+      "averageDuration": 36
+      },
       {
       "eventName": "event",
-      "completions": 858734,
-      "averageDuration": 66210
-   },
+      "completions": 6849,
+      "averageDuration": 91
+      },
       {
       "eventName": "event",
-      "completions": 544140,
-      "averageDuration": 89007
-   },
+      "completions": 4325,
+      "averageDuration": 82
+      },
       {
       "eventName": "event",
-      "completions": 378118,
-      "averageDuration": 98443
-   }
+      "completions": 1321,
+      "averageDuration": 125
+      },
+//       {
+//       "eventName": "event",
+//       "completions": 8587,
+//       "averageDuration": 210
+//    },
+//       {
+//       "eventName": "event",
+//       "completions": 5441,
+//       "averageDuration": 89
+//    },
+//       {
+//       "eventName": "event",
+//       "completions": 3781,
+//       "averageDuration": 283
+//       }
 ]

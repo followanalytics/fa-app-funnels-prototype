@@ -38,7 +38,7 @@ class ScatterPlotChart extends Component {
     var yStackMax = d3.max(layers, function (layer) { return d3.max(layer, function (d) { return d[1] }) })
 
     var margin = { top: 40, right: 10, bottom: 20, left: 10 }
-    var width = 360;
+    var width = 320;
     var height = 240;
 
     var x = d3.scaleBand()

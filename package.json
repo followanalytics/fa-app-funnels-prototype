@@ -7,6 +7,13 @@
   },
   "dependencies": {
     "d3": "^4.13.0",
+    "d3-axis": "^1.0.8",
+    "d3-ease": "^1.0.3",
+    "d3-scale": "^2.0.0",
+    "d3-selection": "^1.3.0",
+    "d3-shape": "^1.2.0",
+    "d3-transition": "^1.1.1",
+    "data-driven-motion": "^0.0.11",
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.2.0",
@@ -17,9 +24,11 @@
     "react-router-redux": "next",
     "react-select": "^1.2.1",
     "react-transition-group": "^2.2.1",
+    "recompose": "^0.26.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "sanitize.css": "^5.0.0"
+    "sanitize.css": "^5.0.0",
+    "styled-components": "^3.1.6"
   },
   "scripts": {
     "start": "react-scripts start",
