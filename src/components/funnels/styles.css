@@ -31,11 +31,44 @@
   background-color: #000;
   border-radius: 25px;
   color: #FFF;
-  width: 40px;
-  height: 40px;
-  line-height: 2.7;
+  width: 30px;
+  height: 30px;
+  line-height: 2.1;
+  padding-left: 1px;
 }
 
 .timeline-add-copy {
   margin-left: 10px;
+}
+
+.switch {
+    border: 1px solid #ccc;
+    width: 45px;
+    height: 20px;
+    border-radius: 13px;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+    top: 5px;
+}
+
+.switch.on {
+    background: #3182bd;
+}
+
+.switch-toggle {
+  border: 1px solid #999;
+  box-shadow: 1px 1px 1px #ccc;
+  width: 20px;
+  height: 18px;
+  left: 0;
+  border-radius: 12px;
+  background: #fff;
+  position: relative;
+  transition: left .2s ease-in-out;
+}
+
+.switch.on .switch-toggle {
+    left: 23px;
 }

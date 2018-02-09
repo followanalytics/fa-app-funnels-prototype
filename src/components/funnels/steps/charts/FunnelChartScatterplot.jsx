@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { withFauxDOM } from 'react-faux-dom'
 import * as d3 from 'd3'
-import { completions } from '../../../data/results';
+import { completions } from '../../../../data/results';
 
 class ScatterPlotChart extends Component {
   constructor(props) {
@@ -25,11 +25,13 @@ class ScatterPlotChart extends Component {
 
     let data = this.props.data;
 
-    let margin = { top: 20, right: 20, bottom: 30, left: 40 },
+    let margin = { top: 30, right: 30, bottom: 40, left: 20 },
       width = this.props.width - margin.left - margin.right,
       height = this.props.height - margin.top - margin.bottom;
 
     console.log('this.props :: ', this.props)
+
+    var color = d3.scaleOrdinal(d3.schemeCategory20c);
 
     let x = d3.scaleBand()
       .range([0, width])
@@ -80,7 +82,7 @@ class ScatterPlotChart extends Component {
       .attr("cx", d => x(d.completions) )
       .attr("cy", d => y(d.averageDuration))
       .attr("r", d => 0 )
-      .style("fill", d => 'red');
+      .style("fill", d => color(d.completions));
 
     circles.transition()
       .duration(1000)
@@ -96,6 +98,6 @@ ScatterPlotChart.defaultProps = {
   chart: 'loading'
 }
 
-const FunnelChart = withFauxDOM(ScatterPlotChart)
+const FunnelScatterplotChart = withFauxDOM(ScatterPlotChart)
 
-export default FunnelChart
+export default FunnelScatterplotChart

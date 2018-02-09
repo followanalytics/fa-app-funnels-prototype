@@ -457,32 +457,32 @@
 */
 export const eventsData = [
       {
-      "eventName": "event",
+      "eventName": "home::landing",
       "completions": 10331,
       "averageDuration": 27
       },
       {
-      "eventName": "event",
+      "eventName": "products::page1",
       "completions": 9977,
       "averageDuration": 99
       },
       {
-      "eventName": "event",
+      "eventName": "products::page2",
       "completions": 8249,
       "averageDuration": 36
       },
       {
-      "eventName": "event",
+      "eventName": "products::page3",
       "completions": 6849,
       "averageDuration": 91
       },
       {
-      "eventName": "event",
+      "eventName": "click::on::product",
       "completions": 4325,
       "averageDuration": 82
       },
       {
-      "eventName": "event",
+      "eventName": "product::checkout",
       "completions": 1321,
       "averageDuration": 125
       },

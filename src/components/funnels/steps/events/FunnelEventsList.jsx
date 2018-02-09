@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { eventsData } from '../../../data/suggestedEvents';
+import { eventsData } from '../../../../data/suggestedEvents';
 import { CSSTransition, TransitionGroup, Transition } from 'react-transition-group';
 import Motion from 'react-motion'
 import styled, {keyframes} from 'styled-components';
@@ -36,8 +36,6 @@ const EventsAnimated = styled.div.attrs({
       animation-fill-mode: forwards;
       animation-play-state: running;
     `;
-
-
 
 class FunnelEventsList extends Component {
   constructor(props) {

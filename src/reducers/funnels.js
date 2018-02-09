@@ -1,5 +1,6 @@
 export const ADD_STEP = 'steps/ADD_STEP'
 export const DELETE_STEP = 'steps/DELETE_STEP'
+export const SET_EXPLORE_MODE = 'steps/SET_EXPLORE_MODE'
 
 const initialState = {
   steps: ['step_1'],
@@ -26,6 +27,12 @@ export default (state = initialState, action) => {
         })
       }
 
+    case SET_EXPLORE_MODE:
+      return {
+        ...state,
+        exploreMode: action.exploreMode
+      }
+
     default:
       return state
   }
@@ -49,3 +56,11 @@ export const deleteStep = (id) => {
   }
 }
 
+export const setExploreMode = (exploreMode = false) => {
+  return dispatch => {
+    dispatch({
+      type: SET_EXPLORE_MODE,
+      exploreMode: exploreMode
+    })
+  }
+}

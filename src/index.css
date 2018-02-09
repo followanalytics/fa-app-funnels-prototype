@@ -44,5 +44,5 @@ body {
   text-align: left;
   padding: 10px;
   overflow-y: auto;
-  max-height: 785px;
+  min-height: 785px;
 }

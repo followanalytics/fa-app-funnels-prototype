@@ -4,10 +4,10 @@ import FunnelStep from './steps/FunnelStep';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
-
 import './styles.css';
 import './animations.css';
-import { addStep } from '../../reducers/funnels';
+import { addStep, setExploreMode } from '../../reducers/funnels';
+import Switch from 'react-toggle-switch'
 
 const StepAnim = ({ children, ...props }) => (
   <CSSTransition
@@ -27,11 +27,12 @@ class Funnel extends Component {
     this.state = {
       overed: -1,
       activeItem: -1,
+      chartSwitched: false,
+      exploreSwitched: false,
     }
   }
 
   setActive = (id) => {
-
     this.setState({
       activeItem: id !== this.state.activeItem ? id : -1,
     })
@@ -45,6 +46,17 @@ class Funnel extends Component {
     else if(id === this.props.stepsLength - 1 && id > 0) {
       return true;
     }
+    else 
+      return false
+  }
+
+  hasViewMode(id) {
+    if (id === this.state.activeItem) {
+      return true
+    }
+    else if (id < this.props.stepsLength - 1) {
+      return true;
+    }
   }
 
   getFunnelSteps() {
@@ -53,6 +65,7 @@ class Funnel extends Component {
       <TransitionGroup className='funnels-steps'>
         {this.props.steps.map((step, id) => {
           const exploreMode = this.hasExploreMode(id);
+          const viewMode = this.hasViewMode(id);
           return (
             <StepAnim key={step}>
               <FunnelStep
@@ -61,6 +74,9 @@ class Funnel extends Component {
                 stepName={step}
                 mouseUp={this.setActive}
                 exploreMode={exploreMode}
+                viewMode={viewMode}
+                chart={this.state.chartSwitched}
+                dumbRendering={this.dumbRendering}
               />
             </StepAnim>
           )
@@ -78,12 +94,35 @@ class Funnel extends Component {
     });
   }
 
+  _toggleExploreSwitch = () => {
+    this.setState({
+      exploreSwitched: !this.state.exploreSwitched,
+    })
+
+    this.props.setExploreMode({
+      exploreMode: this.state.exploreSwitched
+    })
+  }
+
+  _toggleChartSwitch = () => {
+    this.setState({
+      chartSwitched: !this.state.chartSwitched,
+    })
+  }
+
   render() {
     return (
       <div>
-        Funnels explore mode
+        <span style={{fontWeight: 600}}>Funnels Definition</span>
+        <span
+          style={{
+            position: 'absolute',
+            right: '15px',
+          }}>
+          <span style={{ margin: '0 10px' }}>Chart mode</span><Switch onClick={this._toggleChartSwitch} on={this.state.chartSwitched} />
+        </span>
         <div className='funnel'>
-          <FunnelTimeline steps={this.props.steps} exploreMode={this.state.activeItem}/>
+          <FunnelTimeline steps={this.props.steps} exploreMode={this.props.exploreMode} />
           <div className='steps'>
             {this.getFunnelSteps()}
           </div>
@@ -99,10 +138,12 @@ class Funnel extends Component {
 
 const mapStateToProps = state => ({
   steps: state.funnels.steps,
+  exploreMode: state.funnels.exploreMode,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   addStep,
+  setExploreMode,
 }, dispatch)
 
 export default connect(
